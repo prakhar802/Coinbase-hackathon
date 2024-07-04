@@ -18,6 +18,8 @@ type Transaction struct {
 	ID      primitive.ObjectID `json: "id,omitempty" bson:"_id,omitempty"`
 	Amount  int                `json: "amount"`
 	Company string             `json: "company"`
+	Network string             `json: "network`
+	Crypto  string             `json: "crypto`
 }
 
 var collection *mongo.Collection
@@ -81,10 +83,6 @@ func createTransaction(c *fiber.Ctx) error {
 
 	if err != nil {
 		return err
-	}
-
-	if transaction.Company == "" {
-		return c.Status(400).JSON(fiber.Map{"error": "Transaction field cannot be empty"})
 	}
 	insertResult, err := collection.InsertOne(context.Background(), transaction)
 	if err != nil {
