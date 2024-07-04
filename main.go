@@ -18,6 +18,8 @@ type Transaction struct {
 	ID      primitive.ObjectID `json: "id,omitempty" bson:"_id,omitempty"`
 	Amount  int                `json: "amount"`
 	Company string             `json: "company"`
+	Network string             `json: "network`
+	Crypto  string             `json: "crypto`
 }
 
 type User struct {
